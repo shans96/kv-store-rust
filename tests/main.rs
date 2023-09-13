@@ -8,7 +8,8 @@ fn exits_with_no_args() -> Result<(), Box<dyn std::error::Error>> {
 
     cmd.assert()
         .failure()
-        .stderr(predicate::str::contains("the following required arguments were not provided"));
+        .stderr(predicate::str::contains("the following required arguments were not provided"))
+        .code(predicate::ne(0));
 
     Ok(())
 }
